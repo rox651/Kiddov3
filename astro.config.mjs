@@ -1,9 +1,59 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
-import tailwind from '@astrojs/tailwind';
-
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()]
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  experimental: {
+    fonts: [
+      {
+        provider: "local",
+        name: "CabinetGrotesk",
+        cssVariable: "--font-cabinet",
+        variants: [
+          {
+            weight: 100,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Thin.woff2"],
+          },
+          {
+            weight: 200,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Extralight.woff2"],
+          },
+          {
+            weight: 300,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Light.woff2"],
+          },
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Regular.woff2"],
+          },
+          {
+            weight: 500,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Medium.woff2"],
+          },
+          {
+            weight: 700,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Bold.woff2"],
+          },
+          {
+            weight: 800,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Extrabold.woff2"],
+          },
+          {
+            weight: 900,
+            style: "normal",
+            src: ["./src/assets/fonts/CabinetGrotesk-Black.woff2"],
+          },
+        ],
+      },
+    ],
+  },
 });

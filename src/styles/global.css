@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display:
+    var(--font-cabinet), "ui-sans-serif", "system-ui", "sans-serif";
+  --font-body: var(--font-cabinet), "ui-sans-serif", "system-ui", "sans-serif";
+
+  --color-primary-gray: #ecebe7;
+  --color-primary-black: #0a0a0a;
+}
+
+.kd-section-x-p {
+  @apply px-8;
+}
+
+.kd-section-y-p {
+  @apply py-6;
+}
+
+.kd-section-p {
+  @apply px-8 py-6;
+}

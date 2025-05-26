@@ -1,19 +1,21 @@
 {
-  "name": "",
+  "name": "Kiddo Estudio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "biome lint --write .",
+    "lint:fix": "biome check --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/tailwind": "^5.1.1",
-    "astro": "^4.15.9",
-    "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.2"
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.8.0",
+    "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
   }
 }

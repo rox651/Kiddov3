@@ -1,0 +1,16 @@
+---
+import Arrow from "../../../assets/arrow.svg";
+export interface Props {
+  link: string;
+  text: string;
+}
+
+const { link, text } = Astro.props as Props;
+---
+
+<a class="flex items-center gap-3 text-xl" href={link}>
+  {text}
+  <Arrow />
+</a>
+
+

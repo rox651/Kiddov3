@@ -1,11 +1,70 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Svg from '../components/svg/Svg.astro';
+import Layout from "../layouts/Layout.astro";
+import Codebars from "../assets/codebars.svg";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<Svg icon="codebars"  />
+<Layout>
+	<main >
+    <section class="grid place-items-center place-content-center h-dvh">
+
+		<h1 class="text-4xl mb-2">Design studio proudly out-of-the-ordinary</h1>
+		<Codebars  />
+    </section>
+
+
+    <section class="kd-section-x-p bg-primary-gray rounded-b-3xl -mb-16 relative z-10 pb-20" >
+      <div class="container mx-auto">
+
+    <p class="text-7xl text-pretty text-center font-medium leading-23">
+      Kiddo™ is a mantra / human
+      emotions / pride in being out of the
+      ordinary / a commitment to our  
+      dreams / trusting our guts / doing
+      things happily / passion before 
+      fashion / enjoying every coffee /  
+      really working / rebelling against 
+      ourselves / finding our voice / a
+      funny dancing / our life’s work /  
+      freedom / breaking into the system /
+      creative directors of life / design 
+      taking any risk / a punk anthem / be 
+       brave in the present / obsession with
+      plants / do our job well / share with  
+      others / play in the playground / 
+      where do we go / have a nice day
+    </p>
+      </div>
+    </section>
+
+    <section class="kd-section-x-p pb-20 pt-42 text-center text-white bg-primary-black">
+      <div class="container mx-auto">
+      <h2 class="text-4xl">Kiddo™  We are an art direction and design studio.</h2>
+      <p class="text-xl mt-5">
+We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation.
+      </p>
+      </div>
+    </section>
+
+    <section class="kd-section-x-p pb-20 bg-primary-black text-white pt-20" >
+      <div class="container mx-auto">
+
+      <h2 class="text-4xl mb-10">What we do</h2>
+    <p class="text-7xl text-pretty text-center font-medium leading-23">
+      Art direction / Brands identity / Naming 
+      systems / Copywriting / Illustration / 
+      Storytelling / Graphic design / Digital 
+      presence / Packaging / Infographics and 
+      editorial / Animation - motion graphics / Icon 
+      design / Tipography and lettering / Web design 
+      / App development / Photography / Post 
+      production and retouch
+    </p>
+
+    <div class="flex justify-center items-center gap-x-3 text-xl mt-20">
+      <p>What are you waiting for?</p>
+      <a href="mailto:info@kiddoestudio.com">info@kiddoestudio.com</a>
+    </div>
+      </div>
+    </section>
 	</main>
 </Layout>
