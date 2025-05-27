@@ -1,0 +1,99 @@
+---
+import LinkButton from "../../components/common/button/LinkButton.astro";
+import Accordion from "../../components/common/accordion/Accordion.astro";
+
+import Email from "../../assets/email.svg";
+
+import Behance from "../../assets/behance.svg";
+import Instagram from "../../assets/instagram.svg";
+import Linkedin from "../../assets/linkedin.svg";
+import Facebook from "../../assets/facebook.svg";
+import Spotify from "../../assets/spotify.svg";
+
+import Pinterest from "../../assets/pinterest.svg";
+import Youtube from "../../assets/youtube.svg";
+import Dribble from "../../assets/dribble.svg";
+import Vimeo from "../../assets/vimeo.svg";
+---
+<section class="bg-primary-black py-10">
+  <div class=" container mx-auto  kd-section-x-p grid  min-h-[800px] lg:grid-rows-5 lg:grid-cols-3 gap-4">
+
+    <div class="bg-primary-aqua py-10 lg:py-0 lg:p-2 lg:col-start-1 lg:col-end-2 lg:row-span-1 rounded-2xl flex justify-center gap-4 items-center">  
+      <a href="mailto:info@kiddoestudio.com">
+      <h3 class="text-5xl font-medium">Get in touch</h3>
+      <p class="text-xl">info@kiddoestudio.com</p>
+      </a>
+      <Email/>
+    </div>
+
+    <div class="bg-primary-pink lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4 rounded-2xl grid grid-cols-3 grid-rows-3 gap-5 place-content-center place-items-center p-10 [&_svg_path]:transition-colors [&_svg_path]:duration-200 [&_svg]:hover:[&_path]:fill-white">  
+      <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">
+        <Behance/>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <Instagram/>
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+        <Linkedin/>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <Facebook/>
+      </a>
+      <a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer">
+        <Spotify/>
+      </a>
+      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
+        <Pinterest/>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+        <Youtube/>
+      </a>
+      <a href="https://www.dribbble.com" target="_blank" rel="noopener noreferrer">
+        <Dribble/>
+      </a>
+      <a href="https://www.vimeo.com" target="_blank" rel="noopener noreferrer">
+        <Vimeo/>
+      </a>
+    </div>
+
+    <div class="bg-primary-yellow py-10 lg:py-0  lg:col-start-1 lg:col-end-2 lg:row-start-4 rounded-2xl flex items-center justify-center">  
+      <LinkButton className="text-3xl" link="#" text="Kiddo™ Apparel"/>
+    </div>
+
+    <div class="bg-primary-violet py-5 lg:col-start-1  lg:col-end-3 lg:row-span-5 rounded-2xl">  
+    </div>
+
+    <div class="bg-primary-black flex flex-col justify-between space-y-5 lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-5 border border-white py-10 px-12 lg:px-20 lg:py-16 rounded-2xl">
+      <h3 class="text-5xl text-white font-medium">Our Services:</h3>
+      <Accordion 
+        title="Concept & Strategy" 
+        tags={["Concept","Strategy","Brand Creation"]}
+        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."
+        />
+      <Accordion 
+        title="Branding"
+        tags={["Concept","Strategy","Brand Creation"]}
+        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
+      <Accordion 
+        title="Art Direction" 
+        tags={["Concept","Strategy","Brand Creation"]}
+        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
+        <Accordion 
+        title="Collateral Graphic Design" 
+        tags={["Concept","Strategy","Brand Creation"]}
+        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
+        <Accordion 
+        title="Packaging Design" 
+        tags={["Concept","Strategy","Brand Creation"]}
+        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
+        <Accordion 
+        title="Web Development" 
+        tags={["Concept","Strategy","Brand Creation"]}
+        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
+    </div>
+
+    <div class="bg-primary-yellow py-10 px-5 lg:py-0 lg:p-5 lg:col-start-3 lg:row-span-5 flex justify-center items-center rounded-full">
+      <LinkButton className="text-3xl" link="#" text="Workshops"/>
+    </div>
+  </div>
+</section>

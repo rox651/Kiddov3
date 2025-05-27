@@ -1,14 +1,16 @@
 ---
 import Arrow from "../../../assets/arrow.svg";
+import { cn } from "../../../services/common/cn.ts";
 export interface Props {
   link: string;
   text: string;
+  className: string;
 }
 
-const { link, text } = Astro.props as Props;
+const { link, text, className } = Astro.props as Props;
 ---
 
-<a class="flex items-center gap-3 text-xl" href={link}>
+<a className={cn("flex items-center gap-3 text-xl",className)} href={link}>
   {text}
   <Arrow />
 </a>
