@@ -14,50 +14,61 @@ import SpotifyV2 from "../../assets/spotify-v2.svg";
 import FacebookV2 from "../../assets/facebook-v2.svg";
 import DribbbleV2 from "../../assets/dribble-v2.svg";
 
+const BEHANCE_URL = "http://www.be.net/kiddostudio";
+const INSTAGRAM_URL = "https://www.instagram.com/kiddoestudio";
+const LINKEDIN_URL = "https://www.linkedin.com/company/kiddo-estudio/";
+const FACEBOOK_URL = "https://www.facebook.com/kiddostu";
+const PINTEREST_URL = "https://co.pinterest.com/kiddoestudio/";
+const YOUTUBE_URL = "https://www.youtube.com";
+const DRIBBBLE_URL = "https://dribbble.com/kiddoestudio";
+const VIMEO_URL = "https://www.vimeo.com";
+const SPOTIFY_PLAYLIST_URL =
+  "https://open.spotify.com/playlist/5r9h6jF67SoHQz0zE2VKZV?si=e2ef91d1fcb841ef&nd=1&dlsi=dc16b58201c84d70";
+
 export const socialsServices = [
   {
     name: "Behance",
-    url: "https://www.behance.net",
+    url: BEHANCE_URL,
     Icon: Behance,
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com",
+    url: INSTAGRAM_URL,
     Icon: Instagram,
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com",
+    url: LINKEDIN_URL,
     Icon: Linkedin,
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com",
+    url: FACEBOOK_URL,
     Icon: Facebook,
   },
   {
     name: "Spotify",
-    url: "https://www.spotify.com",
+    url: SPOTIFY_PLAYLIST_URL,
     Icon: Spotify,
   },
   {
     name: "Pinterest",
-    url: "https://www.pinterest.com",
+    url: PINTEREST_URL,
     Icon: Pinterest,
   },
   {
     name: "YouTube",
-    url: "https://www.youtube.com",
+    url: YOUTUBE_URL,
     Icon: Youtube,
   },
   {
     name: "Dribbble",
-    url: "https://www.dribbble.com",
+    url: DRIBBBLE_URL,
     Icon: Dribbble,
   },
   {
     name: "Vimeo",
-    url: "https://www.vimeo.com",
+    url: VIMEO_URL,
     Icon: Vimeo,
   },
 ];
@@ -65,27 +76,27 @@ export const socialsServices = [
 export const socialsFooter = [
   {
     name: "Behance",
-    url: "https://www.behance.net",
+    url: BEHANCE_URL,
     Icon: BehanceV2,
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com",
+    url: INSTAGRAM_URL,
     Icon: InstagramV2,
   },
   {
     name: "Spotify",
-    url: "https://www.spotify.com",
+    url: SPOTIFY_PLAYLIST_URL,
     Icon: SpotifyV2,
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com",
+    url: FACEBOOK_URL,
     Icon: FacebookV2,
   },
   {
     name: "Dribbble",
-    url: "https://www.dribbble.com",
+    url: DRIBBBLE_URL,
     Icon: DribbbleV2,
   },
 ];
