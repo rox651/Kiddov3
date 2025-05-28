@@ -72,7 +72,7 @@ export default defineConfig({
     sanity({
       projectId: "5fe5lton",
       dataset: "production",
-      basePath: "/studio",
+      studioBasePath: "/studio",
       useCdn: false,
     }),
     react(),
