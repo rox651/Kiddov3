@@ -26,13 +26,13 @@ const { title, details, tags = [] } = Astro.props as Props;
     aria-labelledby={`${title} accordion menu button`}
     class="accordion__content hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
   >
-    <p class="prose mb-4 mt-1 max-w-full text-white transition-[height] text-lg">
+    <p class="prose mb-4 mt-1 max-w-full text-white transition-[height] lg:text-lg">
       {details}
     </p>
 
     {tags.length > 0 && 
-    <ul class="flex gap-x-4 text-primary-pink pb-5">
-      {tags.map(tag => <li key={tag} class="border border-primary-pink rounded-4xl py-1 px-3 text-lg">{tag}</li>)}
+    <ul class="flex gap-4 text-primary-pink pb-5 flex-wrap ">
+      {tags.map(tag => <li key={tag} class="border border-primary-pink rounded-4xl py-1 px-3 lg:text-lg">{tag}</li>)}
     </ul>}
 
   </div>
@@ -44,6 +44,7 @@ const { title, details, tags = [] } = Astro.props as Props;
     const accordionMenus = document.querySelectorAll(
       ".accordion",
     ) as NodeListOf<HTMLElement>;
+
     accordionMenus.forEach((accordionMenu) => {
       const accordionButton = accordionMenu.querySelector(
         ".accordion__button",
@@ -54,25 +55,32 @@ const { title, details, tags = [] } = Astro.props as Props;
 
       if (accordionButton && accordionContent) {
         accordionButton.addEventListener("click", (event) => {
+          // Close all other accordions
+          accordionMenus.forEach((otherAccordion) => {
+            if (otherAccordion !== accordionMenu && otherAccordion.classList.contains("active")) {
+              const otherButton = otherAccordion.querySelector(".accordion__button") as HTMLElement;
+              const otherContent = otherAccordion.querySelector(".accordion__content") as HTMLElement;
+
+              otherAccordion.classList.remove("active");
+              otherButton.setAttribute("aria-expanded", "false");
+              otherContent.style.maxHeight = "0px";
+              setTimeout(() => {
+                otherContent.classList.add("hidden");
+              }, 300);
+            }
+          });
+
+          // Toggle the current accordion
           if (!accordionMenu.classList.contains("active")) {
-            // if accordion is currently closed, so open it
             accordionMenu.classList.add("active");
             accordionButton.setAttribute("aria-expanded", "true");
-
-            // set max-height to the height of the accordion content
-            // this makes it animate properly
             accordionContent.classList.remove("hidden");
             accordionContent.style.maxHeight =
               accordionContent.scrollHeight + "px";
           } else {
-            // accordion is currently open, so close it
             accordionMenu.classList.remove("active");
             accordionButton.setAttribute("aria-expanded", "false");
-
-            // set max-height to the height of the accordion content
-            // this makes it animate properly
             accordionContent.style.maxHeight = "0px";
-            // delay to allow close animation
             setTimeout(() => {
               accordionContent.classList.add("hidden");
             }, 300);

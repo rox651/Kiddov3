@@ -3,20 +3,10 @@ import LinkButton from "../../components/common/button/LinkButton.astro";
 import Accordion from "../../components/common/accordion/Accordion.astro";
 
 import Email from "../../assets/email.svg";
-
-import Behance from "../../assets/behance.svg";
-import Instagram from "../../assets/instagram.svg";
-import Linkedin from "../../assets/linkedin.svg";
-import Facebook from "../../assets/facebook.svg";
-import Spotify from "../../assets/spotify.svg";
-
-import Pinterest from "../../assets/pinterest.svg";
-import Youtube from "../../assets/youtube.svg";
-import Dribble from "../../assets/dribble.svg";
-import Vimeo from "../../assets/vimeo.svg";
+import { socialsServices } from "../../domain/socials/data";
 ---
-<section class="bg-primary-black py-10">
-  <div class=" container mx-auto  kd-section-x-p grid  min-h-[800px] lg:grid-rows-5 lg:grid-cols-3 gap-4">
+<section class="bg-primary-black py-10 kd-section-x-p">
+  <div class=" container mx-auto grid  min-h-[800px] lg:grid-rows-5 lg:grid-cols-3 gap-4">
 
     <div class="bg-primary-aqua py-10 lg:py-0 lg:p-2 lg:col-start-1 lg:col-end-2 lg:row-span-1 rounded-2xl flex justify-center gap-4 items-center">  
       <a href="mailto:info@kiddoestudio.com">
@@ -26,38 +16,16 @@ import Vimeo from "../../assets/vimeo.svg";
       <Email/>
     </div>
 
-    <div class="bg-primary-pink lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4 rounded-2xl grid grid-cols-3 grid-rows-3 gap-5 place-content-center place-items-center p-10 [&_svg_path]:transition-colors [&_svg_path]:duration-200 [&_svg]:hover:[&_path]:fill-white">  
-      <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">
-        <Behance/>
-      </a>
-      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-        <Instagram/>
-      </a>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-        <Linkedin/>
-      </a>
-      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-        <Facebook/>
-      </a>
-      <a href="https://www.spotify.com" target="_blank" rel="noopener noreferrer">
-        <Spotify/>
-      </a>
-      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
-        <Pinterest/>
-      </a>
-      <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-        <Youtube/>
-      </a>
-      <a href="https://www.dribbble.com" target="_blank" rel="noopener noreferrer">
-        <Dribble/>
-      </a>
-      <a href="https://www.vimeo.com" target="_blank" rel="noopener noreferrer">
-        <Vimeo/>
-      </a>
+    <div class="bg-primary-pink lg:col-start-1 lg:col-end-2 lg:row-start-2 lg:row-end-4 rounded-2xl grid grid-cols-3 grid-rows-3 gap-5 place-content-center place-items-center p-10 [&_svg]:w-full  [&_svg_path]:transition-colors [&_svg_path]:duration-200 [&_svg]:hover:[&_path]:fill-white">  
+      {socialsServices.map(({ name, url, Icon }) => (
+      <a href={url} aria-label={name} target="_blank" rel="noopener noreferrer">
+          <Icon />
+        </a>
+      ))}
     </div>
 
     <div class="bg-primary-yellow py-10 lg:py-0  lg:col-start-1 lg:col-end-2 lg:row-start-4 rounded-2xl flex items-center justify-center">  
-      <LinkButton className="text-3xl" link="#" text="Kiddo™ Apparel"/>
+            <LinkButton className="text-3xl" link="#" text="Kiddo™ Apparel"/>
     </div>
 
     <div class="bg-primary-violet py-5 lg:col-start-1  lg:col-end-3 lg:row-span-5 rounded-2xl">  
