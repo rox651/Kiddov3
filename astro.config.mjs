@@ -15,6 +15,7 @@ export default defineConfig({
 
   output: "static",
 
+  adapter: vercel(),
   experimental: {
     fonts: [
       {
@@ -71,12 +72,10 @@ export default defineConfig({
     sanity({
       projectId: "5fe5lton",
       dataset: "production",
-      studioBasePath: "/admin",
       useCdn: false,
     }),
     react(),
     partytown(),
   ],
-
-  adapter: vercel(),
 });
+
