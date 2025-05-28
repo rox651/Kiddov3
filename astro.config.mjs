@@ -6,10 +6,14 @@ import react from "@astrojs/react";
 
 import partytown from "@astrojs/partytown";
 
+import vercel from "@astrojs/vercel";
+
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  output: "static",
 
   experimental: {
     fonts: [
@@ -63,10 +67,16 @@ export default defineConfig({
     ],
   },
 
-  integrations: [sanity({
-    projectId: "5fe5lton",
-    dataset: "production",
-    studioBasePath: "/admin",
-    useCdn: false,
-  }), react(), partytown()],
+  integrations: [
+    sanity({
+      projectId: "5fe5lton",
+      dataset: "production",
+      studioBasePath: "/admin",
+      useCdn: false,
+    }),
+    react(),
+    partytown(),
+  ],
+
+  adapter: vercel(),
 });
