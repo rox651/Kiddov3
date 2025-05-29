@@ -8,7 +8,7 @@ const WhatWeDo = () => {
         <h2 className="text-4xl mb-10">What we do</h2>
         <p
           ref={textRef}
-          className="text-5xl sm:text-7xl text-pretty text-center font-medium leading-15 sm:leading-23"
+          className="text-5xl sm:text-7xl px-7 lg:px-10 text-pretty text-center font-medium leading-15 sm:leading-23"
         >
           Art direction / Brands identity / Naming systems / Copywriting /
           Illustration / Storytelling / Graphic design / Digital presence /

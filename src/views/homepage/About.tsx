@@ -9,7 +9,7 @@ const About = () => {
         <div className="container mx-auto">
           <p
             ref={textRef}
-            className="text-5xl sm:text-7xl text-pretty text-center font-medium leading-15 sm:leading-23"
+            className="text-5xl px-7 lg:px-10 sm:text-7xl text-pretty text-center font-medium leading-15 sm:leading-23"
           >
             Kiddo™ is a mantra / human emotions / pride in being out of the
             ordinary / a commitment to our dreams / trusting our guts / doing

@@ -9,9 +9,12 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export const useTextReveal = () => {
   const textRef = useRef(null);
   useEffect(() => {
-    const split = new SplitText(textRef.current, { type: "chars" });
+    const split = new SplitText(textRef.current, {
+      type: "words, lines", // only split into words and lines (not characters)
+      mask: "lines",
+    });
 
-    gsap.from(split.chars, {
+    gsap.from(split.words, {
       opacity: 0.3,
       duration: 1,
       stagger: 0.5,
