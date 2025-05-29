@@ -1,16 +1,16 @@
 ---
 import Layout from "../components/layout/Layout.astro";
 import Hero from "../views/homepage/Hero.astro";
-import About from "../views/homepage/About.astro";
-import WhatWeDo from "../views/homepage/WhatWeDo.astro";
+import About from "../views/homepage/About.tsx";
+import WhatWeDo from "../views/homepage/WhatWeDo.tsx";
 import Services from "../views/homepage/Services.astro";
 ---
 
 <Layout>
 	<main >
     <Hero/>
-    <About/>
-    <WhatWeDo/>
+    <About client:load />
+    <WhatWeDo client:load/>
     <Services/>
 	</main>
 </Layout>
