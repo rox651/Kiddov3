@@ -10,14 +10,14 @@ export const useTextReveal = () => {
   const textRef = useRef(null);
   useEffect(() => {
     const split = new SplitText(textRef.current, {
-      type: "words, lines", // only split into words and lines (not characters)
+      type: "words",
       mask: "lines",
     });
 
     gsap.from(split.words, {
       opacity: 0.3,
       duration: 1,
-      stagger: 0.5,
+      stagger: 0.3,
       scrollTrigger: {
         trigger: textRef.current,
         start: "top center",
