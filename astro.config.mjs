@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
-import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
 import partytown from "@astrojs/partytown";
@@ -68,14 +67,5 @@ export default defineConfig({
     ],
   },
 
-  integrations: [
-    sanity({
-      projectId: "5fe5lton",
-      dataset: "production",
-      useCdn: false,
-    }),
-    react(),
-    partytown(),
-  ],
+  integrations: [react(), partytown()],
 });
-

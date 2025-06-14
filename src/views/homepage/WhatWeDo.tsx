@@ -1,4 +1,4 @@
-import { useTextReveal } from "../../use-cases/common/useTextReveal";
+import { useTextReveal } from "../../hooks/common/useTextReveal";
 
 const WhatWeDo = () => {
   const { textRef } = useTextReveal();

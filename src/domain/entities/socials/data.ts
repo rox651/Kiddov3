@@ -1,3 +1,5 @@
+import type { SocialLink } from ".";
+
 import Behance from "../../assets/behance.svg";
 import Instagram from "../../assets/instagram.svg";
 import Linkedin from "../../assets/linkedin.svg";
@@ -25,7 +27,7 @@ const VIMEO_URL = "https://www.vimeo.com";
 const SPOTIFY_PLAYLIST_URL =
   "https://open.spotify.com/playlist/5r9h6jF67SoHQz0zE2VKZV?si=e2ef91d1fcb841ef&nd=1&dlsi=dc16b58201c84d70";
 
-export const socialsServices = [
+export const socialsServices: SocialLink[] = [
   {
     name: "Behance",
     url: BEHANCE_URL,
@@ -73,7 +75,7 @@ export const socialsServices = [
   },
 ];
 
-export const socialsFooter = [
+export const socialsFooter: SocialLink[] = [
   {
     name: "Behance",
     url: BEHANCE_URL,

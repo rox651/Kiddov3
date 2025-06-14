@@ -1,4 +1,6 @@
-export const menuItems = [
+import type { MenuItem } from ".";
+
+export const menuItems: MenuItem[] = [
   {
     label: "Home",
     path: "/",
