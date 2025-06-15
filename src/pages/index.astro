@@ -4,13 +4,26 @@ import Hero from "../views/homepage/Hero.astro";
 import About from "../views/homepage/About.tsx";
 import WhatWeDo from "../views/homepage/WhatWeDo.tsx";
 import Services from "../views/homepage/Services.astro";
+
+import { HomeService } from "../services/home/HomeService";
+import { HomeGraphQLAdapter } from "../infrastructure/adapters/home/HomeGraphQLAdapter";
+import type { Home } from "../domain/entities/home";
+
+const repository = new HomeGraphQLAdapter();
+const homeService = new HomeService(repository);
+const homeData: Home = await homeService.getHome();
 ---
 
 <Layout>
-	<main >
-    <Hero/>
-    <About client:load />
-    <WhatWeDo client:load/>
-    <Services/>
-	</main>
+   <main>
+      <Hero />
+      <About
+         about={homeData.about}
+         whatWeAreTitle={homeData.what_we_are.title}
+         whatWeAreText={homeData.what_we_are.text}
+         client:load
+      />
+      <WhatWeDo text={homeData.what_we_do.text} footer={homeData.what_we_do.footer} client:load />
+      <Services />
+   </main>
 </Layout>

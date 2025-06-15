@@ -1,20 +1,20 @@
 import type { SocialLink } from ".";
 
-import Behance from "../../assets/behance.svg";
-import Instagram from "../../assets/instagram.svg";
-import Linkedin from "../../assets/linkedin.svg";
-import Facebook from "../../assets/facebook.svg";
-import Spotify from "../../assets/spotify.svg";
-import Pinterest from "../../assets/pinterest.svg";
-import Youtube from "../../assets/youtube.svg";
-import Dribbble from "../../assets/dribble.svg";
-import Vimeo from "../../assets/vimeo.svg";
+import Behance from "../../../assets/behance.svg";
+import Instagram from "../../../assets/instagram.svg";
+import Linkedin from "../../../assets/linkedin.svg";
+import Facebook from "../../../assets/facebook.svg";
+import Spotify from "../../../assets/spotify.svg";
+import Pinterest from "../../../assets/pinterest.svg";
+import Youtube from "../../../assets/youtube.svg";
+import Dribbble from "../../../assets/dribble.svg";
+import Vimeo from "../../../assets/vimeo.svg";
 
-import BehanceV2 from "../../assets/behance-v2.svg";
-import InstagramV2 from "../../assets/instagram-v2.svg";
-import SpotifyV2 from "../../assets/spotify-v2.svg";
-import FacebookV2 from "../../assets/facebook-v2.svg";
-import DribbbleV2 from "../../assets/dribble-v2.svg";
+import BehanceV2 from "../../../assets/behance-v2.svg";
+import InstagramV2 from "../../../assets/instagram-v2.svg";
+import SpotifyV2 from "../../../assets/spotify-v2.svg";
+import FacebookV2 from "../../../assets/facebook-v2.svg";
+import DribbbleV2 from "../../../assets/dribble-v2.svg";
 
 const BEHANCE_URL = "http://www.be.net/kiddostudio";
 const INSTAGRAM_URL = "https://www.instagram.com/kiddoestudio";
