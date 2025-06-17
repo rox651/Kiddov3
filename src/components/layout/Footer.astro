@@ -5,8 +5,15 @@ import LinkButton from "../common/button/LinkButton.astro";
 
 import { socialsFooter } from "../../domain/entities/socials/data";
 import { menuItems } from "../../domain/entities/nav/data";
+import { cn } from "../../services/common/cn";
+
+interface Props {
+  isDarkMode?: boolean;
+}
+
+const { isDarkMode } = Astro.props as Props;
 ---
-<footer class="kd-section-x-p bg-primary-black pb-16">
+<footer class={cn("kd-section-x-p pb-16",isDarkMode && "bg-primary-black")}>
   
 
   <div class="flex justify-between bg-primary-gray rounded-2xl container mx-auto py-16 px-10 flex-col-reverse lg:flex-row gap-8">

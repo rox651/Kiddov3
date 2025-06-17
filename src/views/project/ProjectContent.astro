@@ -1,0 +1,50 @@
+---
+import type { Content } from "../../domain/entities/project";
+
+import ResponsiveImage from "../../components/common/image/ResponsiveImage.astro";
+
+interface Props {
+  title: string;
+  content: Content[];
+}
+
+const { content, title } = Astro.props as Props;
+---
+      <section class="kd-section-x-p bg-primary-gray rounded-b-3xl  relative z-10 pt-20 lg:pt-32 ">
+           <div class="container mx-auto pl-5 lg:pl-32">
+             {content.map((item) => {
+               return (
+                 <div class="mb-12 lg:mb-20">
+
+                   {item.body && <p class="lg:text-2xl lg:w-3/4 mx-auto">
+                        {item.body} 
+                   </p>}
+
+                   {item.file && (
+                     <ResponsiveImage
+                       file={item.file}
+                       alt={title}
+                       className="w-full h-auto"
+                     />
+                  )}
+
+
+
+                  {item.files && 
+                      <div class="flex items-center justify-center gap-1 lg:gap-4">
+                      {item.files.map((file) => {
+                        return (
+                              <ResponsiveImage
+                                file={file}
+                                alt={title}
+                                className="w-full h-auto"
+                              />
+                        )
+                      })}
+                      </div>
+                     }
+                  </div>
+                    )
+                   })}
+           </div>
+      </section>

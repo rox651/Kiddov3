@@ -1,6 +1,6 @@
 import type { Project } from "../../entities/project/index";
 
-interface IProjectService {
+interface IProjectRepository {
   getAllProjects: () => Promise<Project[]>;
   getProjectBySlug: (
     slug: string | undefined,
@@ -8,4 +8,4 @@ interface IProjectService {
   ) => Project | null;
 }
 
-export type { IProjectService };
+export type { IProjectRepository };

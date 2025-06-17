@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "biome lint --write .",
-    "lint:fix": "biome check --write ."
+    "lint:fix": "biome check --write .",
+    "ts-valid": "npx tsc --noEmit --skipLibCheck --strict"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",

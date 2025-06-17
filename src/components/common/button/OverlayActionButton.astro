@@ -1,0 +1,22 @@
+---
+import Arrow from "../../../assets/arrow.svg";
+import Close from "../../../assets/close.svg";
+import { cn } from "../../../services/common/cn.ts";
+
+export interface Props {
+  link: string;
+  text: string;
+  className?: string;
+  classNameIcon?: string;
+  isClose?: boolean;
+}
+
+const { link, text, className, classNameIcon, isClose } = Astro.props as Props;
+---
+
+<a class={cn("bg-white max-w-max flex px-3 py-1 rounded-4xl border  items-center gap-3 text-2xl ",className)} href={link}>
+  {text}
+  {isClose ? <Close class={classNameIcon}/> : <Arrow class={classNameIcon}/>} 
+</a>
+
+

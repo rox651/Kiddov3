@@ -1,0 +1,28 @@
+---
+import type { Category } from "../../domain/entities/project";
+import Tag from "../../components/common/tag/Tag.astro";
+import ProjectDetail from "./ProjectDetail.astro";
+
+interface Props {
+  title: string;
+  case_details: string;
+  solution_details: string;
+  categories: Category[];
+}
+
+const { case_details, solution_details, categories } = Astro.props as Props;
+---
+
+      <section class="kd-section-x-p bg-primary-gray rounded-b-3xl  relative z-10 pt-10 lg:pt-32 lg:pb-20">
+           <div class="container mx-auto">
+             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+               <ul class="flex flex-wrap gap-2 mb-4 items-center">
+                 {categories.map((category) => {
+                    return <Tag text={category.name}  />;
+                  })}
+               </ul>
+               <ProjectDetail title={"The Case"} details={case_details}/>
+               <ProjectDetail title={"Our Solution"} details={solution_details}/>
+             </div>
+           </div>
+      </section>

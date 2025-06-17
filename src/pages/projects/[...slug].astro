@@ -1,0 +1,39 @@
+---
+import { GetAllProjectsUseCase } from "../../usecases/project/GetAllProjectsUseCase";
+
+import Layout from "../../components/layout/Layout.astro";
+import ProjectDetails from "../../views/project/ProjectDetails.astro";
+import ProjectContent from "../../views/project/ProjectContent.astro";
+import ProjectShowCase from "../../components/common/project/ProjectShowCase.astro";
+
+export async function getStaticPaths() {
+  const projects = await GetAllProjectsUseCase();
+
+  return projects.map(({ slug, ...restOfProps }) => {
+    return {
+      params: { slug },
+      props: restOfProps,
+    };
+  });
+}
+
+const { title, solution_details, case_details, categories, content } =
+  Astro.props;
+---
+
+<Layout>
+      <ProjectDetails
+        title={title}
+        case_details={case_details}
+        solution_details={solution_details}
+        categories={categories}
+      />
+
+      <ProjectContent
+        title={title}
+        content={content}
+      />
+
+
+      <ProjectShowCase />
+</Layout>

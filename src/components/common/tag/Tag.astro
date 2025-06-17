@@ -1,0 +1,11 @@
+---
+import { cn } from "../../../services/common/cn.ts";
+
+export interface Props {
+  text: string;
+  className?: string;
+}
+
+const { text, className } = Astro.props as Props;
+---
+<li class={cn("border text-primary-pink border-primary-pink rounded-4xl py-1 px-3 lg:text-lg",className)}>{text}</li>

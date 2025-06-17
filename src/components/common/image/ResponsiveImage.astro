@@ -1,0 +1,42 @@
+
+---
+import { Image } from "astro:assets";
+import { BASE_BACKEND_URL } from "../../../domain/constants";
+import type { Cover, File } from "../../../domain/entities/project";
+
+interface Props {
+  file: File | Cover;
+  alt?: string;
+  className?: string;
+  sizes?: string;
+  baseUrl?: string;
+}
+
+const {
+  file,
+  alt = "",
+  className = "",
+  sizes = "(max-width: 768px) 100vw, 50vw",
+  baseUrl = BASE_BACKEND_URL,
+} = Astro.props as Props;
+
+const formats = file?.formats || {};
+const originalUrl = file?.url;
+const srcSet = [
+  formats?.small?.url && `${baseUrl}${formats.small.url} 500w`,
+  formats?.medium?.url && `${baseUrl}${formats.medium.url} 750w`,
+  formats?.large?.url && `${baseUrl}${formats.large.url} 1000w`,
+  originalUrl && `${baseUrl}${originalUrl} ${file.width}w`,
+]
+  .filter(Boolean)
+  .join(", ");
+---
+<Image
+  src={`${baseUrl}${originalUrl}`}
+  alt={alt}
+  class={className}
+  srcset={srcSet}
+  sizes={sizes}
+  width={file?.width}
+  height={file?.height}
+/>

@@ -1,5 +1,5 @@
 ---
-
+import Tag from "../tag/Tag.astro";
 interface Props {
   title: string;
   details: string;
@@ -32,7 +32,7 @@ const { title, details, tags = [] } = Astro.props as Props;
 
     {tags.length > 0 && 
     <ul class="flex gap-4 text-primary-pink pb-5 flex-wrap ">
-      {tags.map(tag => <li key={tag} class="border border-primary-pink rounded-4xl py-1 px-3 lg:text-lg">{tag}</li>)}
+      {tags.map(tag => <Tag text={tag}/>)}
     </ul>}
 
   </div>
