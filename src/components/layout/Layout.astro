@@ -1,14 +1,16 @@
 ---
-
 import "../../styles/global.css";
 import { Font } from "astro:assets";
-import Header from "../../components/layout/Header.astro";
 
+import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
-import { cn } from "../../services/common/cn";
+
+import { GetLayoutUseCase } from "../../usecases/layout/GetLayoutUseCase.ts";
+
+const layout = await GetLayoutUseCase();
 
 interface Props {
-  isDarkMode?: boolean;
+   isDarkMode?: boolean;
 }
 
 const { isDarkMode } = Astro.props as Props;
@@ -16,42 +18,53 @@ const { isDarkMode } = Astro.props as Props;
 
 <!doctype html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content={Astro.generator} />
-    <meta name="keywords" content="branding,graphic design,art direction,agency,creative agency,graphic studio,logo,brand creators,brand designer,portfolio,Kiddo branding Riot,Studio,coffee brand,specialty coffee,worldwide,arabia saudi,arabian coffee,packaging,diseño de empaques,diseño de marca,marca corporativa,brandbook,advertising,marketing,digital marketing,content creation,diseño gráfico,visual design,graphic,illustration,art direction estudio,studio,art direction studio,graphic design studio,diseñográfico,diseño,colombia,cali,bogotá,medellín,cali industria creativa,marcas,creación de marcas,creación de logos,ilustración,empaques,embalajes,instagram,behance,behance kiddo,kiddo estudio,packaging colombia,branding colombia,sports betting,logo designer,logo design,designer,graphic designer,digital design,digital designer,cali colombia,diseño cali,diseño medellín,behance colombia,diseño de logos,diseñador de logos,diseño de empaque,empaques colombia,diseño gráfico colombia,latin america,diseño latino,diseño latinoamericano,branding latinoamericano,china,saudi arabia,deck design,retainer,montly fee,design project,project manager,copywriter,creative studio,branding studio,packaging studio,branding agency,brand agency,logo agency,packaging agency,agencia de diseño,agencia de publicidad,publicidad cali,logos cali,logo colombia,logolounge,logos,logotipos,logotipo">
-    <meta name="description" content="Kiddo™ We are an art direction and design studio.
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="generator" content={Astro.generator} />
+      <meta
+         name="keywords"
+         content="branding,graphic design,art direction,agency,creative agency,graphic studio,logo,brand creators,brand designer,portfolio,Kiddo branding Riot,Studio,coffee brand,specialty coffee,worldwide,arabia saudi,arabian coffee,packaging,diseño de empaques,diseño de marca,marca corporativa,brandbook,advertising,marketing,digital marketing,content creation,diseño gráfico,visual design,graphic,illustration,art direction estudio,studio,art direction studio,graphic design studio,diseñográfico,diseño,colombia,cali,bogotá,medellín,cali industria creativa,marcas,creación de marcas,creación de logos,ilustración,empaques,embalajes,instagram,behance,behance kiddo,kiddo estudio,packaging colombia,branding colombia,sports betting,logo designer,logo design,designer,graphic designer,digital design,digital designer,cali colombia,diseño cali,diseño medellín,behance colombia,diseño de logos,diseñador de logos,diseño de empaque,empaques colombia,diseño gráfico colombia,latin america,diseño latino,diseño latinoamericano,branding latinoamericano,china,saudi arabia,deck design,retainer,montly fee,design project,project manager,copywriter,creative studio,branding studio,packaging studio,branding agency,brand agency,logo agency,packaging agency,agencia de diseño,agencia de publicidad,publicidad cali,logos cali,logo colombia,logolounge,logos,logotipos,logotipo"
+      />
+      <meta
+         name="description"
+         content="Kiddo™ We are an art direction and design studio.
 We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation.
 What we do:
-Art direction / Brands identity / Naming systems / Copywriting / Illustration / Storytelling / Graphic design / Digital presence / Packaging / Infographics and editorial / Animation - motion graphics / Icon design / Tipography and lettering / Web design / App development / Photography / Post production and retouch.">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- <meta name="twitter:site" content="@AdobePortfolio"> -->
-    <meta property="og:title" content="Kiddo™ Estudio">
-    <meta property="og:description" content="Kiddo™ We are an art direction and design studio.
+Art direction / Brands identity / Naming systems / Copywriting / Illustration / Storytelling / Graphic design / Digital presence / Packaging / Infographics and editorial / Animation - motion graphics / Icon design / Tipography and lettering / Web design / App development / Photography / Post production and retouch."
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+      <!-- <meta name="twitter:site" content="@AdobePortfolio"> -->
+      <meta property="og:title" content="Kiddo™ Estudio" />
+      <meta
+         property="og:description"
+         content="Kiddo™ We are an art direction and design studio.
 We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation.
 What we do:
-Art direction / Brands identity / Naming systems / Copywriting / Illustration / Storytelling / Graphic design / Digital presence / Packaging / Infographics and editorial / Animation - motion graphics / Icon design / Tipography and lettering / Web design / App development / Photography / Post production and retouch.">
-    <!-- <meta property="og:image" content=""> -->
-    <meta name="google-site-verification" content="GTM-5BLLW7NN">
-    <link rel="icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon-apple.png">
-    <link rel="canonical" href="https://kiddoestudio.com">
-    <title>Kiddo™ Estudio</title>
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-Z1VHW32QYS"></script>
-    <script type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+Art direction / Brands identity / Naming systems / Copywriting / Illustration / Storytelling / Graphic design / Digital presence / Packaging / Infographics and editorial / Animation - motion graphics / Icon design / Tipography and lettering / Web design / App development / Photography / Post production and retouch."
+      />
+      <!-- <meta property="og:image" content=""> -->
+      <meta name="google-site-verification" content="GTM-5BLLW7NN" />
+      <link rel="icon" href="/favicon.png" />
+      <link rel="apple-touch-icon" href="/favicon-apple.png" />
+      <link rel="canonical" href="https://kiddoestudio.com" />
+      <title>Kiddo™ Estudio</title>
+      <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-Z1VHW32QYS"
+      ></script>
+      <script type="text/partytown">
+         window.dataLayer = window.dataLayer || [];
+         function gtag() {
+            dataLayer.push(arguments);
+         }
+         gtag("js", new Date());
 
-    gtag('config', 'G-Z1VHW32QYS');
-   </script>
-    <Font cssVariable="--font-cabinet" preload />
-  </head>
-  <body class="font-body bg-primary-gray">
-    <Header />
-    <slot />
-    <Footer isDarkMode={isDarkMode}/>
-  </body>
+         gtag("config", "G-Z1VHW32QYS");
+      </script>
+      <Font cssVariable="--font-cabinet" preload />
+   </head>
+   <body class="font-body bg-primary-gray">
+      <Header navLinks={layout.nav_links} />
+      <slot />
+      <Footer navLinks={layout.nav_links} isDarkMode={isDarkMode} />
+   </body>
 </html>
-

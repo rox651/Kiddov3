@@ -1,34 +1,53 @@
 import type { IProjectRepository } from "../../../domain/repositories/project/IProjectRepository";
-import client from "../../graphql/client";
-import { queryProjects } from "../../graphql/queries/queriesProjects";
 import type {
-  Project,
-  QueryProjectsResponse,
+   Project,
+   ProjectShowCase,
+   QueryProjectsResponse,
+   QueryProjectsShowCaseResponse,
 } from "../../../domain/entities/project";
 
-export class ProjectGraphQLAdapter implements IProjectRepository {
-  async getAllProjects(): Promise<Project[]> {
-    const result = await client
-      .query<QueryProjectsResponse>(queryProjects, {})
-      .toPromise();
+import client from "../../graphql/client";
+import { queryProjects } from "../../graphql/queries/queriesProjects";
 
-    if (result.error) {
-      throw new Error(`Failed to fetch projects: ${result.error.message}`);
-    }
+export function createProjectGraphQLRepository(): IProjectRepository {
+   const getAllProjects = async (): Promise<Project[]> => {
+      const result = await client.query<QueryProjectsResponse>(queryProjects, {}).toPromise();
 
-    if (!result.data) {
-      throw new Error("No data received from project query");
-    }
+      if (result.error) {
+         throw new Error(`Failed to fetch projects: ${result.error.message}`);
+      }
 
-    return result.data.projects;
-  }
+      if (!result.data) {
+         throw new Error("No data received from project query");
+      }
 
-  getProjectBySlug(
-    slug: string | undefined,
-    projects: Project[],
-  ): Project | null {
-    const data = projects.find((project) => project.slug === slug);
+      return result.data.projects ?? [];
+   };
 
-    return data ?? null;
-  }
+   const getShowCaseProjects = async (): Promise<ProjectShowCase[]> => {
+      const result = await client
+         .query<QueryProjectsShowCaseResponse>(queryProjects, {})
+         .toPromise();
+
+      if (result.error) {
+         throw new Error(`Failed to fetch projects: ${result.error.message}`);
+      }
+
+      if (!result.data) {
+         throw new Error("No data received from project query");
+      }
+
+      return result.data.projects ?? [];
+   };
+
+   const getProjectBySlug = (slug: string | undefined, projects: Project[]): Project | null => {
+      const data = projects.find(project => project.slug === slug);
+      return data ?? null;
+   };
+
+   return {
+      getAllProjects,
+      getShowCaseProjects,
+      getProjectBySlug,
+   };
 }

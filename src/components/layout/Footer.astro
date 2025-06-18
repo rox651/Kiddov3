@@ -4,14 +4,15 @@ import Email from "../../assets/email.svg";
 import LinkButton from "../common/button/LinkButton.astro";
 
 import { socialsFooter } from "../../domain/entities/socials/data";
-import { menuItems } from "../../domain/entities/nav/data";
+import type { Link } from "../../domain/entities/layout/";
 import { cn } from "../../services/common/cn";
 
 interface Props {
+  navLinks: Link[];
   isDarkMode?: boolean;
 }
 
-const { isDarkMode } = Astro.props as Props;
+const { navLinks, isDarkMode } = Astro.props as Props;
 ---
 <footer class={cn("kd-section-x-p pb-16",isDarkMode && "bg-primary-black")}>
   
@@ -57,9 +58,9 @@ const { isDarkMode } = Astro.props as Props;
 
     <nav>
       <ul class="flex flex-col gap-6 justify-between">
-                {menuItems.map(({ label, path }) => (
+                {navLinks.map(({ name, url }) => (
                   <li>
-                    <LinkButton link={path} text={label} className="text-3xl lg:text-5xl" classNameIcon="lg:w-8 lg:h-8"/>
+                    <LinkButton link={url} text={name} className="text-3xl lg:text-5xl" classNameIcon="lg:w-8 lg:h-8"/>
                   </li>
                 ))}
         </ul>

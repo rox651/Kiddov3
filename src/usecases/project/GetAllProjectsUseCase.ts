@@ -1,8 +1,8 @@
-import { ProjectGraphQLAdapter } from "../../infrastructure/adapters/project/ProjectGraphQLAdapter";
-import { ProjectService } from "../../services/project/ProjectService";
+import { createProjectGraphQLRepository } from "../../infrastructure/adapters/project/ProjectGraphQLAdapter";
+import { createProjectService } from "../../services/project/ProjectService";
 
 export async function GetAllProjectsUseCase() {
-  const adapter = new ProjectGraphQLAdapter();
-  const service = new ProjectService(adapter);
-  return await service.getAllProjects();
+   const repository = createProjectGraphQLRepository();
+   const service = createProjectService(repository);
+   return await service.getAllProjects();
 }
