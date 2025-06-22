@@ -13,6 +13,13 @@ const queryProjects = gql`
         height
         formats
       }
+      cover_for_projects_page {
+        width
+        url
+        size
+        height
+        formats
+      }
       categories {
         name
       }
@@ -44,4 +51,56 @@ const queryProjects = gql`
   }
 `;
 
-export { queryProjects };
+const queryProjectsShowcase = gql`
+  query Projects {
+    projects(filters: { show_in_project_showcase_section: { eq: true } }) {
+      data {
+        id
+        attributes {
+          title
+          slug
+          show_in_project_showcase_section
+          cover {
+            data {
+              attributes {
+                width
+                url
+                size
+                height
+                formats
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const queryProjectsHeroHome = gql`
+  query Projects {
+    projects(filters: { show_in_hero_home: { eq: true } }) {
+      data {
+        id
+        attributes {
+          title
+          slug
+          show_in_hero_home
+          cover {
+            data {
+              attributes {
+                width
+                url
+                size
+                height
+                formats
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export { queryProjects, queryProjectsShowcase, queryProjectsHeroHome };

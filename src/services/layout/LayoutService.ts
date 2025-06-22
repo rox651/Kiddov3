@@ -1,4 +1,3 @@
-import type { Menu } from "../../domain/entities/layout/";
 import type { ILayoutService } from "../../domain/interfaces/layout/ILayoutService";
 import type { ILayoutRepository } from "../../domain/repositories/layout/ILayoutRepository";
 

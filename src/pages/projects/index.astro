@@ -1,0 +1,12 @@
+---
+import ProjectsShowCase from "../../views/about/ProjectsShowCase.tsx";
+import { GetShowCaseProjectsUseCase } from "../../usecases/project/GetShowCaseProjectsUseCase";
+import Layout from "../../components/layout/Layout.astro";
+import { BASE_BACKEND_URL } from "../../domain/constants";
+
+const showcaseProjects = await GetShowCaseProjectsUseCase();
+---
+
+<Layout isDarkModeHeader isDarkModeBody isDarkModeFooter>
+   <ProjectsShowCase showcaseProjects={showcaseProjects} client:load baseUrl={BASE_BACKEND_URL} />
+</Layout>

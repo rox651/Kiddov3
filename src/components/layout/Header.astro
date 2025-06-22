@@ -1,39 +1,60 @@
 ---
 import Logo from "../../assets/logo.svg";
 import LinkButton from "../common/button/LinkButton.astro";
+
+import type { Link } from "../../domain/entities/layout/";
+import { cn } from "../../services/common/cn";
+
+interface Props {
+   contactLink: Link;
+   isDarkMode?: boolean;
+}
+
+const { contactLink, isDarkMode } = Astro.props as Props;
 ---
 
 <header class="kd-section-p flex justify-between items-center relative">
-  <a href="/" class="flex items-center gap-4">
-    <span class="sr-only">Kiddo™ Studio</span>
-    <Logo class="w-32 h-16"/>
-  </a>
-  <div class="text-center absolute -bottom-24 left-1/2 w-full lg:translate-0 lg:w-auto -translate-1/2 lg:static text-sm lg:text-base text-gray-400/80 uppercase">
+   <a href="/" class="flex items-center gap-4">
+      <span class="sr-only">Kiddo™ Studio</span>
+      <Logo class={cn("w-32 h-16 ", isDarkMode && "[&>path]:fill-white")} />
+   </a>
+   <div
+      class="text-center absolute -bottom-24 left-1/2 w-full lg:translate-0 lg:w-auto -translate-1/2 lg:static text-sm lg:text-base text-gray-400/80 uppercase"
+   >
       <p id="datetime">Loading time...</p>
       <p>3°26'14'' N 76°31.35' O | SOUTH AMERICA</p>
       <p>COPYRIGHT © 2018 Kiddo™. All Rights Reserved.</p>
-  </div>
-  <LinkButton link="/contact" text="Get in touch"/>
+   </div>
+   <LinkButton
+      link={contactLink.url}
+      className={cn(isDarkMode && "text-white")}
+      classNameIcon={cn(isDarkMode && "[&>path]:stroke-white")}
+      text={contactLink.name}
+   />
 </header>
 
 <script>
-    function updateTime() {
+   function updateTime() {
       const now = new Date();
       const options = {
-        weekday: 'short',
-        year: '2-digit',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-        timeZone: 'America/Chicago',
+         weekday: "short",
+         year: "2-digit",
+         month: "2-digit",
+         day: "2-digit",
+         hour: "2-digit",
+         minute: "2-digit",
+         second: "2-digit",
+         hour12: true,
+         timeZone: "America/Chicago",
       };
-      const formatter = new Intl.DateTimeFormat('en-US', options);
-      document.getElementById('datetime').textContent = formatter.format(now).replace(",", "").replace(",", "") + " CST";
-    }
+      const formatter = new Intl.DateTimeFormat("en-US", options as Intl.DateTimeFormatOptions);
+      const datetimeElement = document.getElementById("datetime");
+      if (datetimeElement) {
+         datetimeElement.textContent =
+            formatter.format(now).replace(",", "").replace(",", "") + " CST";
+      }
+   }
 
-    updateTime();
-    setInterval(updateTime, 1000);
-  </script>
+   updateTime();
+   setInterval(updateTime, 1000);
+</script>
