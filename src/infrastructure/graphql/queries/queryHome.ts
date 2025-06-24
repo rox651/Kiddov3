@@ -15,4 +15,16 @@ const queryHome = gql`
   }
 `;
 
-export { queryHome };
+const queryHomeServices = gql`
+  query HomeServices {
+    services {
+      title
+      content
+      categories {
+        name
+      }
+    }
+  }
+`;
+
+export { queryHome, queryHomeServices };

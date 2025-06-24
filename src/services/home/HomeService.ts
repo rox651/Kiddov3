@@ -6,5 +6,6 @@ export function createHomeService(
 ): IHomeService {
   return {
     getHome: () => homeRepository.getHome(),
+    getHomeServices: () => homeRepository.getHomeServices(),
   };
 }

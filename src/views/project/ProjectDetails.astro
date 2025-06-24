@@ -29,17 +29,21 @@ const { caseDetails, solutionDetails, categories, socialLinks } =
              </div>
 
                <ul class="flex flex-wrap gap-7 mb-4 items-center mt-16 justify-end">
-                 <li class="text-sm font-medium">Hey! You can also find me at</li>
-                 {socialLinks && socialLinks.map((link) => {
-                 return <li>
-                   <LinkButton
-                   link={link.url}
-                   text={link.name}
-                   className="text-sm font-medium"
-                   classNameIcon="w-[11px] h-[11px]"
-                   />
-                 </li>
+                 {socialLinks && socialLinks.length > 0 && (
+                 <>
+                      <li class="text-sm font-medium">Hey! You can also find me at</li>
+                      {socialLinks.map((link) => {
+                      return <li>
+                        <LinkButton
+                        link={link.url}
+                        text={link.name}
+                        className="text-sm font-medium"
+                        classNameIcon="w-[11px] h-[11px]"
+                        />
+                      </li>
                   })}
+                 </>
+                 )}
                </ul>
            </div>
       </section>

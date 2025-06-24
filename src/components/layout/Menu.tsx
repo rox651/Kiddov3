@@ -71,8 +71,13 @@ const Menu = ({ navLinks }: MenuProps) => {
         "bg-primary-pink transition-all fixed right-10 bottom-10 z-20",
         isOpen
           ? "rounded-[24px] px-10 py-8"
-          : "rounded-[200px] flex justify-center items-center px-3 py-3",
+          : "rounded-[200px] cursor-pointer flex justify-center items-center px-3 py-3",
       )}
+      onClick={() => {
+        if (!isOpen) {
+          handleToggle();
+        }
+      }}
     >
       {isOpen ? (
         <>
@@ -81,7 +86,7 @@ const Menu = ({ navLinks }: MenuProps) => {
               {navLinks.map((link) => (
                 <li key={link.url}>
                   <a
-                    className="justify-between flex text-3xl items-center gap-5"
+                    className="justify-end flex text-3xl items-center gap-5"
                     href={link.url}
                   >
                     {link.name}

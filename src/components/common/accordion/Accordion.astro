@@ -1,9 +1,10 @@
 ---
+import type { Category } from "../../../domain/entities/common";
 import Tag from "../tag/Tag.astro";
 interface Props {
   title: string;
   details: string;
-  tags?: string[];
+  tags?: Category[];
 }
 
 const { title, details, tags = [] } = Astro.props as Props;
@@ -32,7 +33,7 @@ const { title, details, tags = [] } = Astro.props as Props;
 
     {tags.length > 0 && 
     <ul class="flex gap-4 text-primary-pink pb-5 flex-wrap ">
-      {tags.map(tag => <Tag text={tag}/>)}
+      {tags.map(tag => <Tag text={tag.name}/>)}
     </ul>}
 
   </div>

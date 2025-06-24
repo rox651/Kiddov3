@@ -60,18 +60,11 @@ const { navLinks, isDarkMode } = Astro.props as Props;
       <ul class="flex flex-col gap-6 justify-between">
                 {navLinks.map(({ name, url }) => (
                   <li>
-                    <LinkButton link={url} text={name} className="text-3xl lg:text-5xl" classNameIcon="lg:w-8 lg:h-8"/>
+                    <LinkButton link={url} text={name} className="text-3xl lg:text-5xl justify-end" classNameIcon="lg:w-8 lg:h-8"/>
                   </li>
                 ))}
         </ul>
     </nav>
-
-
-
-
-
-
-
 
     </div>
 </footer>

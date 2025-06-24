@@ -4,6 +4,10 @@ import Accordion from "../../components/common/accordion/Accordion.astro";
 
 import Email from "../../assets/email.svg";
 import { socialsServices } from "../../domain/entities/socials/data.ts";
+
+import { GetHomeServicesUseCase } from "../../usecases/home/GetHomeServicesUseCase";
+
+const services = await GetHomeServicesUseCase();
 ---
 <section class="bg-primary-black py-10 kd-section-x-p">
   <div class=" container mx-auto grid  min-h-[800px] lg:grid-rows-5 lg:grid-cols-3 gap-4">
@@ -31,33 +35,18 @@ import { socialsServices } from "../../domain/entities/socials/data.ts";
     <div class="bg-primary-violet py-5 lg:col-start-1  lg:col-end-3 lg:row-span-5 rounded-2xl">  
     </div>
 
-    <div class="bg-primary-black flex flex-col justify-between space-y-5 lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-5 border border-white py-10 px-12 lg:px-20 lg:py-16 rounded-2xl">
+    <div class="bg-primary-black flex flex-col  space-y-5 lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-5 border border-white py-10 px-12 lg:px-20 lg:py-16 rounded-2xl">
       <h3 class="text-5xl text-white font-medium">Our Services:</h3>
-      <Accordion 
-        title="Concept & Strategy" 
-        tags={["Concept","Strategy","Brand Creation"]}
-        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."
-        />
-      <Accordion 
-        title="Branding"
-        tags={["Concept","Strategy","Brand Creation"]}
-        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
-      <Accordion 
-        title="Art Direction" 
-        tags={["Concept","Strategy","Brand Creation"]}
-        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
-        <Accordion 
-        title="Collateral Graphic Design" 
-        tags={["Concept","Strategy","Brand Creation"]}
-        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
-        <Accordion 
-        title="Packaging Design" 
-        tags={["Concept","Strategy","Brand Creation"]}
-        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
-        <Accordion 
-        title="Web Development" 
-        tags={["Concept","Strategy","Brand Creation"]}
-        details="We seek to connect humans with experiences proudly out of the ordinary, being executors of authentic brands that inspire through their rebellious essence, the true way of shouting to the world, finding the balance between concept, graphics, illustration and animation."/>
+      {
+
+      services && services.map((service)=>{
+            return <Accordion 
+                  title={service.title} 
+                  tags={service.categories}
+                  details={service.content}
+                  />
+            })
+      }
     </div>
 
     <div class="bg-primary-yellow py-10 px-5 lg:py-0 lg:p-5 lg:col-start-3 lg:row-span-5 flex justify-center items-center rounded-full">
