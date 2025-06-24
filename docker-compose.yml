@@ -1,0 +1,21 @@
+services:
+  astro-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4321:4321"
+    env_file: .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: sync
+          path: ./public
+          target: /app/public
+        - action: rebuild
+          path: package.json
