@@ -1,3 +1,5 @@
+import type { Link } from "../common/";
+
 interface QueryLayoutResponse {
   menu: Menu;
 }
@@ -7,9 +9,4 @@ interface Menu {
   contact_link: Link;
 }
 
-interface Link {
-  name: string;
-  url: string;
-}
-
-export type { QueryLayoutResponse, Menu, Link };
+export type { QueryLayoutResponse, Menu };

@@ -6,6 +6,10 @@ const queryProjects = gql`
       title
       case_details
       solution_details
+      social_links {
+        name
+        url
+      }
       cover {
         width
         url

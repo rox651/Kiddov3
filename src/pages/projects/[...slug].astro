@@ -7,25 +7,33 @@ import ProjectContent from "../../views/project/ProjectContent.astro";
 import ProjectShowCase from "../../components/common/project/ProjectShowCase.astro";
 
 export async function getStaticPaths() {
-   const projects = await GetAllProjectsUseCase();
+  const projects = await GetAllProjectsUseCase();
 
-   return projects.map(({ slug, ...restOfProps }) => {
-      return {
-         params: { slug },
-         props: restOfProps,
-      };
-   });
+  return projects.map(({ slug, ...restOfProps }) => {
+    return {
+      params: { slug },
+      props: restOfProps,
+    };
+  });
 }
 
-const { title, solution_details, case_details, categories, content } = Astro.props;
+const {
+  title,
+  solution_details,
+  case_details,
+  categories,
+  content,
+  social_links,
+} = Astro.props;
 ---
 
 <Layout>
    <ProjectDetails
       title={title}
-      case_details={case_details}
-      solution_details={solution_details}
+      caseDetails={case_details}
+      solutionDetails={solution_details}
       categories={categories}
+      socialLinks={social_links}
    />
 
    <ProjectContent title={title} content={content} />

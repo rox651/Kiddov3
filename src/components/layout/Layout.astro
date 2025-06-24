@@ -2,8 +2,9 @@
 import "../../styles/global.css";
 import { Font } from "astro:assets";
 
-import Header from "../../components/layout/Header.astro";
-import Footer from "../../components/layout/Footer.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import Menu from "./Menu.tsx";
 
 import { GetLayoutUseCase } from "../../usecases/layout/GetLayoutUseCase.ts";
 import { cn } from "../../services/common/cn";
@@ -67,7 +68,8 @@ Art direction / Brands identity / Naming systems / Copywriting / Illustration / 
       <Font cssVariable="--font-cabinet" preload />
    </head>
    <body class={cn("font-body bg-primary-gray", isDarkModeBody && "bg-primary-black")}>
-      <Header contactLink={layout.contact_link} isDarkMode={isDarkModeHeader} />
+     <Header contactLink={layout.contact_link} isDarkMode={isDarkModeHeader} />
+      <Menu navLinks={layout.nav_links} client:load/>
       <slot />
       <Footer navLinks={layout.nav_links} isDarkMode={isDarkModeFooter} />
    </body>

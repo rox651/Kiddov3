@@ -1,19 +1,22 @@
 ---
-import type { Category } from "../../domain/entities/project";
+import type { Category, Link } from "../../domain/entities/common";
+import LinkButton from "../../components/common/button/LinkButton.astro";
 import Tag from "../../components/common/tag/Tag.astro";
 import ProjectDetail from "./ProjectDetail.astro";
 
 interface Props {
   title: string;
-  case_details: string;
-  solution_details: string;
+  caseDetails: string;
+  solutionDetails: string;
   categories: Category[];
+  socialLinks: Link[];
 }
 
-const { case_details, solution_details, categories } = Astro.props as Props;
+const { caseDetails, solutionDetails, categories, socialLinks } =
+  Astro.props as Props;
 ---
 
-      <section class="kd-section-x-p bg-primary-gray rounded-b-3xl  relative z-10 pt-10 lg:pt-32 lg:pb-20">
+      <section class="kd-section-x-p bg-primary-gray rounded-b-3xl  relative z-10 pt-10 lg:pt-32 ">
            <div class="container mx-auto">
              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                <ul class="flex flex-wrap gap-2 mb-4 items-center">
@@ -21,8 +24,22 @@ const { case_details, solution_details, categories } = Astro.props as Props;
                     return <Tag text={category.name}  />;
                   })}
                </ul>
-               <ProjectDetail title={"The Case"} details={case_details}/>
-               <ProjectDetail title={"Our Solution"} details={solution_details}/>
+               <ProjectDetail title={"The Case"} details={caseDetails}/>
+               <ProjectDetail title={"Our Solution"} details={solutionDetails}/>
              </div>
+
+               <ul class="flex flex-wrap gap-7 mb-4 items-center mt-16 justify-end">
+                 <li class="text-sm font-medium">Hey! You can also find me at</li>
+                 {socialLinks && socialLinks.map((link) => {
+                 return <li>
+                   <LinkButton
+                   link={link.url}
+                   text={link.name}
+                   className="text-sm font-medium"
+                   classNameIcon="w-[11px] h-[11px]"
+                   />
+                 </li>
+                  })}
+               </ul>
            </div>
       </section>
