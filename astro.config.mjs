@@ -1,15 +1,32 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-
 import react from "@astrojs/react";
 
 import partytown from "@astrojs/partytown";
 
 import vercel from "@astrojs/vercel";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      svgr({
+        include: "**/*.svg?react",
+        svgrOptions: {
+          plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+          svgoConfig: {
+            plugins: [
+              "preset-default",
+              "removeTitle",
+              "removeDesc",
+              "removeDoctype",
+              "cleanupIds",
+            ],
+          },
+        },
+      }),
+    ],
   },
 
   output: "static",
