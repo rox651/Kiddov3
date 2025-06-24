@@ -16,51 +16,70 @@ const Menu = ({ navLinks }: MenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const animationTimeline = useRef<gsap.core.Timeline | null>(null);
 
-  const handleToggle = () => {
-    if (!menuRef.current || isAnimating) return;
+  const openMenu = () => {
+    if (!menuRef.current || !navRef.current) return;
 
     const menu = menuRef.current;
-    const willOpen = !isOpen;
+    const nav = navRef.current;
 
-    if (willOpen) {
-      setIsAnimating(true);
+    const timeline = gsap.timeline({
+      defaults: { ease: "back.out" },
+    });
 
-      setIsOpen(true);
-
-      requestAnimationFrame(() => {
-        gsap.to(menu, {
-          x: 0,
-          y: 0,
-          scaleX: 1,
-          scaleY: 1,
-          duration: 0.6,
-          ease: "power2.out",
-          onComplete: () => {
-            setIsAnimating(false);
-          },
-        });
-      });
-    } else {
-      setIsAnimating(true);
-
-      gsap.to(menu, {
-        scaleX: 0.8,
-        scaleY: 0.8,
-        duration: 0.4,
-        ease: "power2.in",
-        onComplete: () => {
-          setIsOpen(false);
-          setIsAnimating(false);
-          gsap.set(menu, {
-            x: 0,
-            y: 0,
-            scaleX: 1,
-            scaleY: 1,
-          });
+    timeline
+      .fromTo(
+        menu,
+        {
+          width: 60,
+          height: 60,
+          borderRadius: "0",
+          backgroundColor: "transparent",
         },
+        {
+          width: 350,
+          height: 400,
+          duration: 0.4,
+          borderRadius: "24px",
+          backgroundColor: "#df9ef4",
+        },
+      )
+      .fromTo(
+        nav,
+        {
+          opacity: 0,
+          x: 100,
+        },
+        {
+          delay: 0.3,
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      );
+
+    animationTimeline.current = timeline;
+    setIsOpen(true);
+  };
+
+  const closeMenu = () => {
+    if (animationTimeline.current) {
+      animationTimeline.current.reverse();
+
+      animationTimeline.current.eventCallback("onReverseComplete", () => {
+        setIsOpen(false);
       });
+    }
+  };
+
+  const handleToggle = () => {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
     }
   };
 
@@ -68,46 +87,40 @@ const Menu = ({ navLinks }: MenuProps) => {
     <div
       ref={menuRef}
       className={cn(
-        "bg-primary-pink transition-all fixed right-10 bottom-10 z-20",
-        isOpen
-          ? "rounded-[24px] px-10 py-8"
-          : "rounded-[200px] cursor-pointer flex justify-center items-center px-3 py-3",
+        "overflow-hidden w-[60px] h-[60px]   fixed right-10 bottom-10 z-20 px-3 py-3",
       )}
-      onClick={() => {
-        if (!isOpen) {
-          handleToggle();
-        }
-      }}
     >
-      {isOpen ? (
-        <>
-          <nav className="mb-10">
-            <ul ref={navRef} className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <li key={link.url}>
-                  <a
-                    className="justify-end flex text-3xl items-center gap-5"
-                    href={link.url}
-                  >
-                    {link.name}
-                    <Arrow />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <button
-            onClick={handleToggle}
-            className="ml-auto block bg-primary-black [&>svg>path]:stroke-primary-pink  rounded-full cursor-pointer"
-          >
-            <Close />
-          </button>
-        </>
-      ) : (
-        <button onClick={handleToggle} className="cursor-pointer">
-          <Plus />
+      <nav className="mb-10 absolute right-5 top-8">
+        <ul ref={navRef} className="translate-x-full flex flex-col gap-3">
+          {navLinks.map((link) => (
+            <li key={link.name}>
+              <a
+                className="justify-end flex text-3xl items-center gap-5"
+                href={link.url}
+              >
+                {link.name}
+                <Arrow />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div
+        className={cn(
+          "absolute flex w-[50px] h-[50px] rounded-full justify-center items-center bg-primary-pink right-1 bottom-[6px]",
+        )}
+      >
+        <button
+          onClick={handleToggle}
+          className={cn(
+            "cursor-pointer ",
+            isOpen &&
+              "block bg-primary-black [&>svg>path]:stroke-primary-pink rounded-full",
+          )}
+        >
+          {isOpen ? <Close /> : <Plus />}
         </button>
-      )}
+      </div>
     </div>
   );
 };
