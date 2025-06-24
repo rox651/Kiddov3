@@ -5,12 +5,11 @@ import { GetAllProjectsUseCase } from "../../../usecases/project/GetAllProjectsU
 import ResponsiveImage from "../image/ResponsiveImage.astro";
 import OverlayActionButton from "../button/OverlayActionButton.astro";
 
-const projects = await GetAllProjectsUseCase();
-const projectsToShow = projects.slice(0, 4);
-
 interface Props {
-   isDarkMode?: boolean;
+  isDarkMode?: boolean;
 }
+
+const projects = await GetAllProjectsUseCase();
 
 const { isDarkMode } = Astro.props as Props;
 ---
@@ -23,18 +22,28 @@ const { isDarkMode } = Astro.props as Props;
       )}
    >
       <p>What are you waiting for?</p>
+      <a href="mailto:info@kiddoestudio.com" aria-label="Mail to info@kiddoestudio.com">info@kiddoestudio.com</a>
    </div>
-
-   <div class="flex items-center gap-3 relative justify-center">
-      <OverlayActionButton link="/projects" text="Project Showcase" className="absolute  z-30" />
+  
+   {projects && projects.length > 0 && 
+    <div class="flex items-center gap-3 relative justify-center">
+      <OverlayActionButton link="/projects" text="Project Showcase" className="absolute z-30" />
       {
-         projectsToShow.map(project => (
+         projects.map(project => (
+         <a
+          class="cursor-pointer"
+          href={`/projects/${project.slug}`}
+          aria-label={project.title}
+           >
             <ResponsiveImage
                file={project.cover}
                alt={project.title}
                className="flex-1 w-full object-cover rounded-lg shadow-lg"
             />
+          </a>
          ))
       }
    </div>
+    }
+
 </div>
