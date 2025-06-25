@@ -90,7 +90,9 @@ const Menu = ({ navLinks }: MenuProps) => {
         "overflow-hidden w-[60px] h-[60px]   fixed right-10 bottom-10 z-20 px-3 py-3",
       )}
     >
-      <nav className="mb-10 absolute right-5 top-8">
+      <nav
+        className={cn("mb-10 absolute -right-20 top-8", isOpen && "right-5")}
+      >
         <ul ref={navRef} className="translate-x-full flex flex-col gap-3">
           {navLinks.map((link) => (
             <li key={link.name}>
